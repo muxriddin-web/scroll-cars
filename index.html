@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>LAMBORGHINI CENTENARIO | Superkar Taqdimoti</title>
+<meta name="description" content="770 ot kuchiga ega Lamborghini Centenario LP 770-4 modelining interaktiv 3D taqdimoti." />
+<link rel="icon" href="data:,">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          void: '#0A0B0D',
+          panel: '#15171B',
+          steel: '#4A5D6C',
+          copper: '#C08552',
+          'copper-bright': '#E0A876',
+          ivory: '#EDEAE2',
+          mist: '#A3A8B0',
+        },
+        fontFamily: {
+          display: ['"Big Shoulders Display"', 'sans-serif'],
+          body: ['"Manrope"', 'sans-serif'],
+          mono: ['"Space Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { background: #0A0B0D; }
+  body { -webkit-font-smoothing: antialiased; }
+  ::selection { background: #C08552; color: #0A0B0D; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0A0B0D; }
+  ::-webkit-scrollbar-thumb { background: #4A5D6C; }
+
+  .reticle-corner { position: absolute; width: 22px; height: 22px; border-color: rgba(192,133,82,0.65); }
+  .text-shadow-soft { text-shadow: 0 2px 20px rgba(0, 0, 0, 0.95), 0 0 8px rgba(10, 11, 13, 0.9); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+  .responsive-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+}
+/* Mobil qurilmalar (standart) */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+}
+
+.card {
+  width: 100%;
+}
+
+/* Planshetlar (768px+) */
+@media (min-width: 768px) {
+  .wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .card {
+    width: calc(50% - 10px);
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .card {
+    width: calc(33.333% - 10px);
+  }
+}
+</style>
+
+<!-- Import map -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/examples/jsm/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+    "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm",
+    "gsap/ScrollTrigger": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger/+esm"
+  }
+}
+</script>
+</head>
+
+<body class="bg-void text-ivory font-body overflow-hidden selection:bg-copper">
+
+  <!-- ══════════════════════ LOADER ══════════════════════ -->
+  <div id="loader" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-void">
+    <p class="font-display text-2xl md:text-3xl tracking-[0.35em] text-ivory">LAMBORGHINI<span class="text-copper"> — </span>CENTENARIO</p>
+    <div class="mt-8 w-56 h-[2px] bg-panel overflow-hidden">
+      <div id="loader-bar" class="h-full bg-copper w-0 transition-[width] duration-200 ease-out"></div>
+    </div>
+    <p id="loader-status" class="mt-4 font-mono text-[11px] tracking-widest text-mist uppercase">Model yuklanmoqda...</p>
+  </div>
+
+  <!-- ══════════════════ FIXED 3D CANVAS ══════════════════ -->
+  <canvas id="webgl-canvas" class="fixed inset-0 z-[1] pointer-events-none"></canvas>
+
+  <!-- ══════════════════ HUD / TELEMETRY OVERLAY ══════════════════ -->
+  <div class="fixed inset-0 z-20 pointer-events-none select-none">
+    <div class="reticle-corner top-6 left-6 border-t border-l"></div>
+    <div class="reticle-corner top-6 right-6 border-t border-r"></div>
+    <div class="reticle-corner bottom-6 left-6 border-b border-l"></div>
+    <div class="reticle-corner bottom-6 right-6 border-b border-r"></div>
+
+    <div class="absolute top-6 left-1/2 -translate-x-1/2 font-display tracking-[0.4em] text-xs md:text-sm text-ivory drop-shadow-md">
+      LAMBORGHINI <span class="text-copper">/</span> CENTENARIO LP 770-4
+    </div>
+
+    <div class="absolute bottom-8 left-8 max-w-[70vw]">
+      <p id="hud-sector" class="font-mono text-[10px] md:text-xs tracking-[0.25em] text-copper-bright uppercase font-bold drop-shadow">SEKTOR 01 // ORBITAL KO'RINISH VA AERODINAMIKA</p>
+      <p id="hud-coords" class="font-mono text-[10px] tracking-widest text-ivory/80 mt-1">TELEMETRIYA: FAOL // KOORDINATA: X 0.00  Y 0.00  Z 0.00</p>
+    </div>
+
+    <div class="absolute bottom-8 right-8 w-28 md:w-40">
+      <div class="h-[2px] bg-panel w-full">
+        <div id="hud-progress-fill" class="h-full bg-copper" style="width:0%"></div>
+      </div>
+      <p class="font-mono text-[10px] tracking-widest text-ivory/80 mt-1 text-right">SKANERLASH: <span class="text-copper-bright font-bold">100%</span></p>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SCROLL TRACK ══════════════════ -->
+  <main id="scene-track" class="relative z-10">
+
+    <!-- ── SECTION 1 — HERO / EXTERIOR ORBIT (400vh) ── -->
+    <section data-story class="relative min-h-[400vh]">
+      <div class="sticky top-0 h-screen flex items-end md:items-center px-6 md:px-16 pb-24 md:pb-0">
+        <div class="max-w-xl">
+          <p data-hero-reveal class="font-mono text-xs tracking-[0.3em] text-copper uppercase mb-4 font-bold drop-shadow">Lamborghini — Centenario Series</p>
+          <h1 data-hero-reveal class="font-display text-[14vw] md:text-8xl leading-[0.85] tracking-tight uppercase text-shadow-soft text-ivory">
+            Tezlikning<br /><span class="text-copper-bright">Yangi Erası</span>
+          </h1>
+          
+          <p data-hero-reveal class="mt-6 max-w-md text-ivory text-base md:text-lg leading-relaxed text-shadow-soft font-medium border-l-2 border-copper pl-3">
+            770 ot kuchiga ega atmosferali V12 dvigatel, ultra-yengil uglerod tolasidan ishlangan monokok kuzov va faol aerodinamika. Mashinaning 360° dizaynini ko'rish uchun pastga suring.
+          </p>
+        </div>
+      </div>
+      <div id="scroll-cue" class="pointer-events-none absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-ivory/90 drop-shadow">
+        <span class="font-mono text-[10px] tracking-[0.3em] uppercase text-copper-bright font-bold">Pastga suring</span>
+        <svg width="14" height="20" viewBox="0 0 14 20" fill="none"><path d="M7 1v16M1 11l6 6 6-6" stroke="#E0A876" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </section>
+
+    <!-- ── SECTION 2 — DOOR OPEN / PROFILE (250vh) ── -->
+    <section data-story class="relative min-h-[250vh]">
+      <div class="sticky top-0 h-screen flex items-center justify-end px-6 md:px-16">
+        <div class="max-w-md text-right">
+          <p data-reveal class="font-mono text-xs tracking-[0.3em] text-copper uppercase mb-4 font-bold drop-shadow">Ergonomika va Injiniring</p>
+          <h2 data-reveal class="font-display text-5xl md:text-6xl leading-[0.9] uppercase text-shadow-soft text-ivory">
+            Qaychisimon<br /><span class="text-copper-bright">Eshik Tizimi</span>
+          </h2>
+          <p data-reveal class="mt-6 text-ivory text-base md:text-lg leading-relaxed ml-auto text-shadow-soft font-medium border-r-2 border-copper pr-3">
+            Havo qarshiligini kamaytiruvchi vertikal mexanizmli uglerod eshiklar. Aerodinamik kanallar havo oqimini to'g'ri orqa diffuzorga yo'naltiradi.
+          </p>
+          <div data-reveal class="mt-6 inline-flex gap-4 font-mono text-xs text-ivory border-t border-copper/40 pt-4 text-shadow-soft">
+            <span>KUZOV: <strong class="text-copper-bright">Carbon Monocoque</strong></span>
+            <span>OG'IRLIK: <strong class="text-copper-bright">1,520 kg</strong></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 3 — INTERIOR & SPECS (350vh) ── -->
+    <section data-story class="relative min-h-[350vh]">
+      <div class="sticky top-0 h-screen flex flex-col items-center justify-center px-6 md:px-16 text-center">
+        <!-- SHAFTOFLIKSIZ TO'LIQ OCHIQ HUD PANEL -->
+        <div class="max-w-4xl w-full p-4 md:p-6">
+          <p data-reveal class="font-mono text-xs tracking-[0.3em] text-copper uppercase mb-2 font-bold text-shadow-soft">Kokpit Telemetriyasi va Xarakteristika</p>
+          <h2 data-reveal class="font-display text-5xl md:text-7xl leading-[0.85] uppercase text-shadow-soft mb-8 text-ivory">
+            Intellektual Salon
+          </h2>
+          
+          <!-- WIREFRAME (RAMKALI) KARTALAR — SALON SHINNAM KO'RINADI -->
+          <div data-reveal class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full mb-8">
+            <div class="rounded-lg border border-copper/50 p-4 transition-all hover:border-copper hover:bg-void/20">
+              <p class="font-display text-4xl md:text-5xl text-ivory text-shadow-soft">350<span class="text-copper-bright text-base align-top ml-1">km/h</span></p>
+              <p class="font-mono text-[10px] tracking-widest text-ivory uppercase mt-2 font-bold text-shadow-soft">Maksimal Tezlik</p>
+            </div>
+            <div class="rounded-lg border border-copper/50 p-4 transition-all hover:border-copper hover:bg-void/20">
+              <p class="font-display text-4xl md:text-5xl text-copper-bright text-shadow-soft">2.8<span class="text-copper text-base align-top ml-1">sek</span></p>
+              <p class="font-mono text-[10px] tracking-widest text-ivory uppercase mt-2 font-bold text-shadow-soft">0–100 km/h Tezlanish</p>
+            </div>
+            <div class="rounded-lg border border-copper/50 p-4 transition-all hover:border-copper hover:bg-void/20">
+              <p class="font-display text-4xl md:text-5xl text-ivory text-shadow-soft">6.5L<span class="text-copper-bright text-base align-top ml-1">V12</span></p>
+              <p class="font-mono text-[10px] tracking-widest text-ivory uppercase mt-2 font-bold text-shadow-soft">Atmosferali Dvigatel</p>
+            </div>
+            <div class="rounded-lg border border-copper/50 p-4 transition-all hover:border-copper hover:bg-void/20">
+              <p class="font-display text-4xl md:text-5xl text-copper-bright text-shadow-soft">770<span class="text-copper text-base align-top ml-1">o.k.</span></p>
+              <p class="font-mono text-[10px] tracking-widest text-ivory uppercase mt-2 font-bold text-shadow-soft">Umumiy Quvvat</p>
+            </div>
+          </div>
+
+          <!-- TEXNIK DETALLAR (RAMKASIZ HUD ELEMETLARI) -->
+          <div data-reveal class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left border-t border-copper/40 pt-6 font-mono text-xs">
+            <div class="space-y-1">
+              <p class="text-copper-bright uppercase text-[10px] tracking-widest font-bold text-shadow-soft">Dvigatel</p>
+              <p class="text-ivory font-semibold text-shadow-soft">6.5 Litr V12 N/A (8,600 RPM)</p>
+            </div>
+            <div class="space-y-1">
+              <p class="text-copper-bright uppercase text-[10px] tracking-widest font-bold text-shadow-soft">Transmissiya</p>
+              <p class="text-ivory font-semibold text-shadow-soft">7-bosqichli ISR uzatmalar qutisi</p>
+            </div>
+            <div class="space-y-1">
+              <p class="text-copper-bright uppercase text-[10px] tracking-widest font-bold text-shadow-soft">Yuruvchi Qism</p>
+              <p class="text-ivory font-semibold text-shadow-soft">To'liq Uzatmali (AWD) + Orqa g'ildiraklar burilishi</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
