@@ -77,11 +77,7 @@ lives in `js/config.js`:
 - The placeholder vehicle is deliberately stylized — matte panels
   with glowing copper seams — rather than an attempt at photoreal
   car paint, so it reads honestly as a scanned engineering concept
-  rather than a fake photo. The corner-bracket HUD, sector labels
-  and live coordinates carry that same "viewing the car through a
-  precision instrument" idea through the whole page.
-- Canvas is `position:fixed; inset:0; z-1; pointer-events:none` as
-  requested, and stays that way — `main.js` only flips
+
 
 
 ## Dependencies (all via CDN, pinned versions)
