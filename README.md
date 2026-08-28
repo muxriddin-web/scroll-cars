@@ -56,10 +56,7 @@ every part correctly named and hinged.
 Everything about *when* things happen and *where the camera goes*
 lives in `js/config.js`:
 
-- `SECTION_VH` — relative scroll-length of each of the 5 story beats.
-  Raise a number to slow that section down.
-- `CAMERA_PATH` — an ordered list of `{ t, position, lookAt, fov }`
-  waypoints. `t` is 0–1 global scroll progress; `main.js` linearly
+
 
 
 
