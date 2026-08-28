@@ -38,10 +38,7 @@ else needs to change.
 **Node naming.** For the hood-opening, wheel-spin and interior reveal
 to wire up automatically, name the relevant nodes in your modeling
 tool so they *contain* one of the substrings listed in
-`NODE_NAME_HINTS` in `js/config.js` (matching is case-insensitive),
-for example: `Hood`, `Trunk`, `Door_FL` / `Door_FR` / `Door_RL` /
-at
-should only be visible once the camera is inside the cabin).
+ the camera is inside the cabin).
 
 **Hinges.** For a correct hood/trunk/door swing, author an empty
 ("hinge" node) at the real pivot point in your DCC tool, parent the
