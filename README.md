@@ -47,10 +47,3 @@ tool so they *contain* one of the substrings listed in
   car paint, so it reads honestly as a scanned engineering concept
 
 
-
-## Dependencies (all via CDN, pinned versions)
-
-- Tailwind CSS (Play CDN)
-- Three.js `0.160.0` (`GLTFLoader`, `OrbitControls`, `Reflector`,
-  `RoomEnvironment`)
-
