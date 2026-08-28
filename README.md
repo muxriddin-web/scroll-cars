@@ -65,11 +65,7 @@ lives in `js/config.js`:
   control over the motion (the hero orbit is generated
   programmatically by `orbitRing()` for a smooth 360°).
 - `HOOD_OPEN_RANGE` / `INTERIOR_HIDE_SHELL_RANGE` / `FREE_LOOK_START_T`
-  — progress windows for the hood-open beat, the "camera is inside
-  the cabin so hide the outer shell" beat, and where OrbitControls
-  takes over for the free-look reveal at the end.
-- `SPECS` — the four numbers on the final CTA card (also hand-written
-  into `index.html`'s markup for the actual copy — keep both in sync
+
 
 
 ## Design notes
