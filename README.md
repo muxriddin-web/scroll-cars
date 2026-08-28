@@ -51,16 +51,6 @@ If you don't do any of the above, the page still runs perfectly —
 it just falls back to the procedural placeholder, which already has
 every part correctly named and hinged.
 
-## Retiming or reshaping the story
-
-Everything about *when* things happen and *where the camera goes*
-lives in `js/config.js`:
-
-
-
-
-
-
 ## Design notes
 
 - The placeholder vehicle is deliberately stylized — matte panels
