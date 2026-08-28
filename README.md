@@ -60,11 +60,7 @@ lives in `js/config.js`:
   Raise a number to slow that section down.
 - `CAMERA_PATH` — an ordered list of `{ t, position, lookAt, fov }`
   waypoints. `t` is 0–1 global scroll progress; `main.js` linearly
-  interpolates between the two waypoints surrounding the current
-  scroll position. Add more waypoints wherever you want tighter
-  control over the motion (the hero orbit is generated
-  programmatically by `orbitRing()` for a smooth 360°).
-- `HOOD_OPEN_RANGE` / `INTERIOR_HIDE_SHELL_RANGE` / `FREE_LOOK_START_T`
+
 
 
 
