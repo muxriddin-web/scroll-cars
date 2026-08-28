@@ -40,8 +40,7 @@ to wire up automatically, name the relevant nodes in your modeling
 tool so they *contain* one of the substrings listed in
 `NODE_NAME_HINTS` in `js/config.js` (matching is case-insensitive),
 for example: `Hood`, `Trunk`, `Door_FL` / `Door_FR` / `Door_RL` /
-`Door_RR`, `Wheel_FL` / `Wheel_FR` / `Wheel_RL` / `Wheel_RR`, `Body`
-(the outer shell) and `Interior` (dash/seats/wheel — everything that
+at
 should only be visible once the camera is inside the cabin).
 
 **Hinges.** For a correct hood/trunk/door swing, author an empty
