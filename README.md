@@ -70,12 +70,7 @@ lives in `js/config.js`:
   takes over for the free-look reveal at the end.
 - `SPECS` — the four numbers on the final CTA card (also hand-written
   into `index.html`'s markup for the actual copy — keep both in sync
-  if you change them).
 
-`main.js` is organized top-to-bottom (renderer → load/fallback →
-scroll timeline → text reveals → render loop) and shouldn't need
-edits for normal retuning — see the inline comments at each
-`camera.position` / `lookAt` touch point if you do need to go in.
 
 ## Design notes
 
