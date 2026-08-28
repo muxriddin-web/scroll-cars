@@ -40,10 +40,6 @@ to wire up automatically, name the relevant nodes in your modeling
 tool so they *contain* one of the substrings listed in
  the camera is inside the cabin).
 
-If you don't do any of the above, the page still runs perfectly —
-it just falls back to the procedural placeholder, which already has
-every part correctly named and hinged.
-
 ## Design notes
 
 - The placeholder vehicle is deliberately stylized — matte panels
