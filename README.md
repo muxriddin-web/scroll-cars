@@ -87,9 +87,7 @@ edits for normal retuning — see the inline comments at each
   precision instrument" idea through the whole page.
 - Canvas is `position:fixed; inset:0; z-1; pointer-events:none` as
   requested, and stays that way — `main.js` only flips
-  `pointerEvents` to `auto` for the brief free-look window at the
-  end (so OrbitControls can receive drag input), then hands it back.
-- Respects `prefers-reduced-motion` (see `index.html`'s `<style>`).
+
 
 ## Dependencies (all via CDN, pinned versions)
 
