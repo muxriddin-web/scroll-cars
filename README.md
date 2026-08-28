@@ -47,9 +47,7 @@ should only be visible once the camera is inside the cabin).
 ("hinge" node) at the real pivot point in your DCC tool, parent the
 panel mesh to it, and name the empty using the same hints above
 (e.g. an empty named `Hood_Hinge` with the hood mesh as its child).
-`main.js` will use that empty directly as the pivot. If you only
-name the mesh itself, `main.js` estimates a hinge from the mesh's
-bounding box — it works, but a real authored hinge always looks
+
 better.
 
 If you don't do any of the above, the page still runs perfectly —
