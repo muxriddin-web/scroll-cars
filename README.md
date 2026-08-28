@@ -4,7 +4,7 @@ A scroll-driven 3D product page for a fictional luxury hybrid hypercar.
 Vanilla ES modules + Tailwind (CDN) + Three.js + GSAP/ScrollTrigger —
 no build step, no bundler required.
 
-## Run it
+## Run
 
 Browsers block `import` in files opened directly as `file://`, so
 serve the folder over HTTP. Any static server works, e.g. from this
@@ -39,13 +39,6 @@ else needs to change.
 to wire up automatically, name the relevant nodes in your modeling
 tool so they *contain* one of the substrings listed in
  the camera is inside the cabin).
-
-**Hinges.** For a correct hood/trunk/door swing, author an empty
-("hinge" node) at the real pivot point in your DCC tool, parent the
-panel mesh to it, and name the empty using the same hints above
-(e.g. an empty named `Hood_Hinge` with the hood mesh as its child).
-
-better.
 
 If you don't do any of the above, the page still runs perfectly —
 it just falls back to the procedural placeholder, which already has
