@@ -12,7 +12,7 @@ folder:
 
 ```bash
 python3 -m http.server 8080
-# or
+# 
 npx serve .
 ```
 
@@ -104,7 +104,6 @@ edits for normal retuning — see the inline comments at each
   `RoomEnvironment`)
 - GSAP `3.12.5` + `ScrollTrigger`
 - Google Fonts: Big Shoulders Display, Manrope, Space Mono
-
 Swap any of these for local/npm copies later without touching the
 rest of the code — only the `importmap` in `index.html` needs to
 change.
