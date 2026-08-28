@@ -53,8 +53,4 @@ tool so they *contain* one of the substrings listed in
 - Tailwind CSS (Play CDN)
 - Three.js `0.160.0` (`GLTFLoader`, `OrbitControls`, `Reflector`,
   `RoomEnvironment`)
-- GSAP `3.12.5` + `ScrollTrigger`
-- Google Fonts: Big Shoulders Display, Manrope, Space Mono
-Swap any of these for local/npm copies later without touching the
-rest of the code — only the `importmap` in `index.html` needs to
-change.
+
