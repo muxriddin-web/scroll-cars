@@ -184,7 +184,7 @@ If you have questions, suggestions, or feedback, feel free to reach out.
 
 ### Project Repository
 
-https://github.com/muxriddin-web/lamborghini-3d
+  https://github.com/muxriddin-web/scroll-cars
 
 ### Author
 
