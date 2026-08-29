@@ -62,7 +62,7 @@ Scroll through the page to explore the vehicle and its interactive 3D presentati
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/muxriddin-web/lamborghini-3d.git
+git clone https://github.com/muxriddin-web/scroll-cars.git
 ```
 
 ### Navigate into the Project
