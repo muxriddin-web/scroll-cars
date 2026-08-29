@@ -44,7 +44,14 @@ Optimized front-end code provides smooth transitions and responsive interactions
 
 ## 📸 Preview
 
-**Lamborghini Centenario 3D Experience**
+<div align="center">
+  <a href="https://mfs-portfoliouz.netlify.app/portfolio1/projects">
+    <img src="Screenshot_4.png" alt="Checkers Game Demo" width="600"/>
+  </a>
+  <p><i>Click to watch the demo on my portfolio</i></p>
+</div>
+*Click to explore the live website.*
+
 
 Scroll through the page to explore the vehicle and its interactive 3D presentation.
 
