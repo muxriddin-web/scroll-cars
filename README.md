@@ -45,8 +45,8 @@ Optimized front-end code provides smooth transitions and responsive interactions
 ## 📸 Preview
 
 <div align="center">
-  <a href="https://mfs-portfoliouz.netlify.app/portfolio1/projects">
-    <img src="Screenshot_4.png" alt="Checkers Game Demo" width="600"/>
+  <!-- <a href="https://mfs-portfoliouz.netlify.app/portfolio1/projects"> -->
+    <img src="Screenshot_2.png" alt="Checkers Game Demo" width="600"/>
   </a>
   <p><i>Click to watch the demo on my portfolio</i></p>
 </div>
