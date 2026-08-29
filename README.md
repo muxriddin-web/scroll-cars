@@ -143,11 +143,6 @@ lamborghini-3d/
 │
 ├── assets/
 │   ├── models/
-│   ├── images/
-│   ├── textures/
-│   ├── icons/
-│   ├── sounds/
-│   └── fonts/
 │
 ├── README.md
 └── LICENSE
