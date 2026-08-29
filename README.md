@@ -122,8 +122,6 @@ Fully optimized for:
 - [ ] 🎨 Multiple Car Colors
 - [ ] 🚗 Additional 3D Car Models
 - [ ] 💡 Interactive Headlights & Taillights
-- [ ] 🔊 Engine Sound Effects
-- [ ] 🎵 Background Music
 - [ ] 🛞 Interactive Wheel Animation
 - [ ] 🏁 Driving Animation
 - [ ] 📊 Vehicle Specifications
