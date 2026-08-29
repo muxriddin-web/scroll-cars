@@ -30,17 +30,7 @@ assets/models/       Put your car.glb here
 
 ## Using your own car model
 
-Drop a `.glb` (or `.gltf` + its assets) at `assets/models/car.glb`.
-`main.js` tries to load it first and only falls back to the built-in
-procedural car if that file is missing or fails to load — nothing
-else needs to change.
 
-**Node naming.** For the hood-opening, wheel-spin and interior reveal
-to wire up automatically, name the relevant nodes in your modeling
-tool so they *contain* one of the substrings listed in
- the camera is inside the cabin).
-
-## Design notes
 
 - The placeholder vehicle is deliberately stylized — matte panels
   with glowing copper seams — rather than an attempt at photoreal
