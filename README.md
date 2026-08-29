@@ -20,20 +20,6 @@ Then open `http://localhost:8080`.
 
 ## What's here
 
-```
-index.html          Markup, Tailwind config, fonts, import map
-js/config.js         Camera path, section timing, colors — edit THIS to retune the story
-js/car-builder.js    Procedural placeholder car (used automatically if car.glb is absent)
-js/main.js           Scene setup, loading, scroll timeline, render loop
-assets/models/       Put your car.glb here
-```
 
-## Using your own car model
-
-
-
-- The placeholder vehicle is deliberately stylized — matte panels
-  with glowing copper seams — rather than an attempt at photoreal
-  car paint, so it reads honestly as a scanned engineering concept
 
 
