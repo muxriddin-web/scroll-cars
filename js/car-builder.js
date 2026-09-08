@@ -7,7 +7,7 @@
  * copper seams, read as a scanned engineering blueprint rather
  * than a photo pretending to be a real vehicle. This also means
  * every part main.js needs (hood, trunk, 4 doors, 4 wheels, an
- * interior group) is guaranteed to exist with a predictable ,
+ * interior group) is guaranteed to exist with a predictable name,
  * so the scroll timeline always has something correct to animate.
  *
  * Swap in a real GLTF at any time — main.js prefers it automatically
